@@ -12,37 +12,47 @@ const CONFIG = {
 // ============================================
 // DOM ELEMENTS
 // ============================================
-const elements = {
-    roboticsProjectsContainer: document.getElementById('robotics-projects-container'),
-    llmopsProjectsContainer: document.getElementById('llmops-projects-container'),
-    experienceContainer: document.getElementById('experience-container'),
-    papersContainer: document.getElementById('papers-container'),
-    udemyMinutes: document.getElementById('udemy-minutes'),
-    udemyGraph: document.getElementById('udemy-graph'),
-    udemyMap: document.getElementById('udemy-map'),
-    reviewSlider: document.getElementById('review-slider'),
-    reviewDots: document.getElementById('review-dots'),
-    reviewPrev: document.getElementById('review-prev'),
-    reviewNext: document.getElementById('review-next'),
-    contactEmail: document.getElementById('contact-email'),
-    contactLinkedIn: document.getElementById('contact-linkedin'),
-    contactGithub: document.getElementById('contact-github'),
-    heroIntro: document.getElementById('hero-intro'),
-    profileImage: document.getElementById('profile-image'),
-    profileIntro: document.getElementById('profile-intro'),
-    currentYear: document.getElementById('current-year')
-};
+let elements = {};
 
 // Review slider state
 let currentReviewIndex = 0;
 let reviewImages = [];
 
+// Initialize DOM elements
+function initializeElements() {
+    elements = {
+        roboticsProjectsContainer: document.getElementById('robotics-projects-container'),
+        llmopsProjectsContainer: document.getElementById('llmops-projects-container'),
+        experienceContainer: document.getElementById('experience-container'),
+        papersContainer: document.getElementById('papers-container'),
+        udemyMinutes: document.getElementById('udemy-minutes'),
+        udemyGraph: document.getElementById('udemy-graph'),
+        udemyMap: document.getElementById('udemy-map'),
+        reviewSlider: document.getElementById('review-slider'),
+        reviewDots: document.getElementById('review-dots'),
+        reviewPrev: document.getElementById('review-prev'),
+        reviewNext: document.getElementById('review-next'),
+        contactEmail: document.getElementById('contact-email'),
+        contactLinkedIn: document.getElementById('contact-linkedin'),
+        contactGithub: document.getElementById('contact-github'),
+        heroIntro: document.getElementById('hero-intro'),
+        profileImage: document.getElementById('profile-image'),
+        profileIntro: document.getElementById('profile-intro'),
+        currentYear: document.getElementById('current-year')
+    };
+}
+
 // ============================================
 // INITIALIZATION
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize elements first
+    initializeElements();
+    
     // Set current year
-    elements.currentYear.textContent = new Date().getFullYear();
+    if (elements.currentYear) {
+        elements.currentYear.textContent = new Date().getFullYear();
+    }
     
     // Initialize navigation
     initNavigation();
@@ -67,23 +77,14 @@ async function loadData() {
         
         const data = await response.json();
         
-        // Debug: Check if elements exist
-        console.log('Loading data...', {
-            hasRoboticsContainer: !!elements.roboticsProjectsContainer,
-            hasLLMOpsContainer: !!elements.llmopsProjectsContainer,
-            hasUdemyMinutes: !!elements.udemyMinutes,
-            projectsData: data.projects,
-            udemyData: data.udemy
-        });
-        
         // Populate all sections with data
-        populateHero(data.hero);
-        populateProfile(data.profile);
-        populateProjects(data.projects);
-        populateUdemy(data.udemy);
-        populateExperience(data.experience);
-        populatePapers(data.papers);
-        populateContact(data.contact);
+        if (data.hero) populateHero(data.hero);
+        if (data.profile) populateProfile(data.profile);
+        if (data.projects) populateProjects(data.projects);
+        if (data.udemy) populateUdemy(data.udemy);
+        if (data.experience) populateExperience(data.experience);
+        if (data.papers) populatePapers(data.papers);
+        if (data.contact) populateContact(data.contact);
         
     } catch (error) {
         console.error('Error loading data.json:', error);
@@ -278,7 +279,9 @@ function extractYouTubeId(url) {
 // **UPDATE data.json udemy section to modify stats**
 function populateUdemy(udemyData) {
     if (!udemyData) {
-        if (elements.udemyMinutes) elements.udemyMinutes.textContent = 'N/A';
+        if (elements.udemyMinutes) {
+            elements.udemyMinutes.textContent = 'N/A';
+        }
         return;
     }
     
@@ -293,23 +296,29 @@ function populateUdemy(udemyData) {
         } else {
             elements.udemyMinutes.textContent = 'N/A';
         }
-    } else {
-        console.error('udemyMinutes element not found');
     }
     
     // Load graph image
     if (elements.udemyGraph && udemyData.graphImage) {
         elements.udemyGraph.src = udemyData.graphImage;
+        elements.udemyGraph.style.display = 'block';
         elements.udemyGraph.onerror = function() {
             this.style.display = 'none';
+        };
+        elements.udemyGraph.onload = function() {
+            this.style.display = 'block';
         };
     }
     
     // Load map image
     if (elements.udemyMap && udemyData.mapImage) {
         elements.udemyMap.src = udemyData.mapImage;
+        elements.udemyMap.style.display = 'block';
         elements.udemyMap.onerror = function() {
             this.style.display = 'none';
+        };
+        elements.udemyMap.onload = function() {
+            this.style.display = 'block';
         };
     }
     
