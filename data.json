@@ -1,0 +1,113 @@
+{
+  "hero": {
+    "intro": "Specializing in robotics automation, computer vision, and AI-driven solutions. Passionate about building intelligent systems that solve real-world problems with cutting-edge technology."
+  },
+  "projects": [
+    {
+      "title": "Automatic Optical Fiber Inspection",
+      "description": "Developed an automated inspection system using UR5 collaborative robot integrated with advanced anomaly detection models to identify microscopic dust particles (15–25µm) on optical fiber connectors. Achieved 98% detection accuracy with real-time processing capabilities.",
+      "tools": ["UR5 Robot", "Deep Learning", "Python", "OpenCV", "Computer Vision"],
+      "videoUrl": "https://www.youtube.com/watch?v=example1",
+      "githubUrl": ""
+    },
+    {
+      "title": "AOI of PCBs (VLM + ResNet + PatchVORE)",
+      "description": "Designed an Automated Optical Inspection (AOI) system for printed circuit boards combining Vision-Language Models, ResNet architecture, and PatchVORE technology. System detects defects with 95%+ accuracy, reducing manual inspection time by 70%.",
+      "tools": ["Vision-Language Models", "ResNet", "PatchVORE", "PyTorch", "Computer Vision"],
+      "videoUrl": "https://www.youtube.com/watch?v=example2",
+      "githubUrl": ""
+    },
+    {
+      "title": "Funny Face-Tracking Robot",
+      "description": "Built an interactive robot that uses real-time face detection and tracking to follow human movements. Features include emotion recognition, playful responses, and smooth servo motor control for natural head movements.",
+      "tools": ["Computer Vision", "Face Detection", "Arduino", "Python", "Servo Control"],
+      "videoUrl": "https://www.youtube.com/watch?v=example3",
+      "githubUrl": ""
+    },
+    {
+      "title": "AI-RAG Chatbot with FOB Escalation",
+      "description": "Developed an intelligent chatbot using Retrieval-Augmented Generation (RAG) architecture with decision-making capabilities for Front-of-Building (FOB) escalation. Integrates with enterprise knowledge bases to provide contextual responses and automated ticket routing.",
+      "tools": ["LangChain", "RAG", "OpenAI API", "Python", "NLP", "Decision Trees"],
+      "videoUrl": "",
+      "githubUrl": ""
+    }
+  ],
+  "udemy": {
+    "totalHours": 120,
+    "totalStudents": 15000,
+    "engagement": "85%",
+    "feedback": [
+      "feedback1.jpg",
+      "feedback2.jpg"
+    ]
+  },
+  "experience": [
+    {
+      "title": "Automation Engineer",
+      "company": "Company Name",
+      "duration": "2020 - Present",
+      "description": "Leading automation and computer vision projects for industrial applications, specializing in robotic systems and quality inspection.",
+      "highlights": [
+        "Developed automated inspection systems reducing defect rates by 40%",
+        "Implemented computer vision solutions for real-time quality control",
+        "Led team of 5 engineers on robotics integration projects",
+        "Designed and deployed deep learning models for anomaly detection"
+      ]
+    },
+    {
+      "title": "Computer Vision Engineer",
+      "company": "Previous Company",
+      "duration": "2018 - 2020",
+      "description": "Focused on developing machine learning models for industrial automation and quality assurance systems.",
+      "highlights": [
+        "Created CNN-based defect detection models with 95%+ accuracy",
+        "Optimized image processing pipelines for real-time performance",
+        "Collaborated with cross-functional teams on AI integration",
+        "Published research on novel computer vision techniques"
+      ]
+    },
+    {
+      "title": "Robotics Intern",
+      "company": "Early Career Company",
+      "duration": "2017 - 2018",
+      "description": "Gained hands-on experience with industrial robots and automation systems.",
+      "highlights": [
+        "Programmed UR5 and ABB robots for various applications",
+        "Assisted in developing automated testing procedures",
+        "Learned ROS (Robot Operating System) and motion planning"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "title": "Advanced Anomaly Detection in Optical Fiber Manufacturing Using Deep Learning",
+      "authors": "Saroj Debnath, et al.",
+      "venue": "International Conference on Computer Vision",
+      "year": "2023",
+      "abstract": "This paper presents a novel approach to detecting microscopic defects in optical fiber connectors using a custom deep learning architecture. Our method achieves 98% accuracy in identifying particles as small as 15µm.",
+      "url": "https://example.com/paper1"
+    },
+    {
+      "title": "Integrating Vision-Language Models for Automated PCB Inspection",
+      "authors": "Saroj Debnath, Collaborator Name",
+      "venue": "Journal of Industrial Automation",
+      "year": "2022",
+      "abstract": "We propose a hybrid approach combining Vision-Language Models with traditional CNNs for PCB defect detection, demonstrating superior performance in complex inspection scenarios.",
+      "url": "https://example.com/paper2"
+    },
+    {
+      "title": "Real-Time Face Tracking for Interactive Robotics Applications",
+      "authors": "Saroj Debnath",
+      "venue": "Robotics and Automation Letters",
+      "year": "2021",
+      "abstract": "A lightweight face tracking system optimized for embedded systems, enabling natural human-robot interaction with minimal computational overhead.",
+      "url": "https://example.com/paper3"
+    }
+  ],
+  "contact": {
+    "email": "saroj.debnath@example.com",
+    "linkedin": "https://www.linkedin.com/in/sarojdebnath",
+    "github": "https://github.com/sarojdebnath"
+  }
+}
+

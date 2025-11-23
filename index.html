@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Saroj Debnath - Automation & Computer Vision Engineer Portfolio">
+    <title>Saroj Debnath | Automation & Computer Vision Engineer</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full bg-white shadow-md z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-2xl font-bold text-blue-600">SD</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="#udemy" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Udemy</a>
+                        <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                        <a href="#papers" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Papers</a>
+                        <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
+                <a href="#home" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#projects" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#udemy" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Udemy</a>
+                <a href="#experience" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#papers" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Papers</a>
+                <a href="#contact" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 min-h-screen flex items-center bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-4">
+                    Saroj Debnath
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-blue-600 font-semibold mb-6">
+                    Automation & Computer Vision Engineer
+                </h2>
+                <p id="hero-intro" class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
+                    Specializing in robotics automation, computer vision, and AI-driven solutions. 
+                    Passionate about building intelligent systems that solve real-world problems.
+                </p>
+                <a href="#projects" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg">
+                    See My Work <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Featured Projects</h2>
+            <p class="text-center text-gray-600 mb-12">Innovative solutions in automation and computer vision</p>
+            
+            <!-- Projects will be loaded dynamically from data.json -->
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Fallback content if JSON fails to load -->
+                <div class="project-card bg-gray-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Loading Projects...</h3>
+                        <p class="text-gray-600 mb-4">Please wait while we load the project data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Udemy Section -->
+    <section id="udemy" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Udemy Teaching</h2>
+            <p class="text-center text-gray-600 mb-12">Sharing knowledge through online education</p>
+            
+            <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+                <!-- Udemy stats will be loaded dynamically from data.json -->
+                <div id="udemy-stats" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-blue-600 mb-2" id="udemy-hours">--</div>
+                        <div class="text-gray-600">Total Hours</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-blue-600 mb-2" id="udemy-students">--</div>
+                        <div class="text-gray-600">Students Enrolled</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-blue-600 mb-2" id="udemy-engagement">--</div>
+                        <div class="text-gray-600">Engagement Rate</div>
+                    </div>
+                </div>
+                
+                <div id="udemy-feedback" class="mt-8">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Student Feedback</h3>
+                    <div id="feedback-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Feedback images will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Professional Experience</h2>
+            <p class="text-center text-gray-600 mb-12">My journey in automation and AI</p>
+            
+            <!-- Experience will be loaded dynamically from data.json -->
+            <div id="experience-container" class="max-w-4xl mx-auto space-y-6">
+                <!-- Fallback content -->
+                <div class="bg-gray-50 rounded-lg shadow-md p-6">
+                    <p class="text-gray-600">Loading experience data...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Papers Section -->
+    <section id="papers" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Research & Publications</h2>
+            <p class="text-center text-gray-600 mb-12">Contributing to the field of computer vision and AI</p>
+            
+            <!-- Papers will be loaded dynamically from data.json -->
+            <div id="papers-container" class="max-w-4xl mx-auto space-y-6">
+                <!-- Fallback content -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-600">Loading publications data...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Get In Touch</h2>
+            <p class="text-center text-gray-600 mb-12">Let's collaborate on innovative projects</p>
+            
+            <div id="contact-info" class="max-w-2xl mx-auto">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg shadow-lg p-8">
+                    <div class="space-y-6">
+                        <!-- Contact details will be loaded from data.json -->
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-envelope text-blue-600 text-2xl"></i>
+                            <a href="mailto:contact@example.com" id="contact-email" class="text-lg text-gray-700 hover:text-blue-600 transition-colors">
+                                Loading...
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="fab fa-linkedin text-blue-600 text-2xl"></i>
+                            <a href="#" id="contact-linkedin" target="_blank" class="text-lg text-gray-700 hover:text-blue-600 transition-colors">
+                                Loading...
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="fab fa-github text-blue-600 text-2xl"></i>
+                            <a href="#" id="contact-github" target="_blank" class="text-lg text-gray-700 hover:text-blue-600 transition-colors">
+                                Loading...
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; <span id="current-year"></span> Saroj Debnath. All rights reserved.</p>
+            <p class="mt-2 text-gray-400">Built with HTML, Tailwind CSS, and JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
