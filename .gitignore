@@ -36,4 +36,5 @@ private/
 # Backup Files
 *.bak
 *.backup
+test.py
 
