@@ -592,21 +592,36 @@ function createPaperCard(paper) {
 // ============================================
 // **UPDATE data.json contact section to modify your contact info**
 function populateContact(contact) {
-    if (!contact) return;
+    if (!contact) {
+        console.warn('No contact data provided');
+        return;
+    }
     
-    if (contact.email) {
+    if (contact.email && elements.contactEmail) {
         elements.contactEmail.href = `mailto:${contact.email}`;
         elements.contactEmail.textContent = contact.email;
+    } else if (elements.contactEmail) {
+        console.warn('Email not found in contact data');
     }
     
-    if (contact.linkedin) {
+    if (contact.linkedin && elements.contactLinkedIn) {
         elements.contactLinkedIn.href = contact.linkedin;
         elements.contactLinkedIn.textContent = 'LinkedIn Profile';
+        // Ensure target="_blank" is set
+        elements.contactLinkedIn.setAttribute('target', '_blank');
+        elements.contactLinkedIn.setAttribute('rel', 'noopener noreferrer');
+    } else if (elements.contactLinkedIn) {
+        console.warn('LinkedIn URL not found in contact data');
     }
     
-    if (contact.github) {
+    if (contact.github && elements.contactGithub) {
         elements.contactGithub.href = contact.github;
         elements.contactGithub.textContent = 'GitHub Profile';
+        // Ensure target="_blank" is set
+        elements.contactGithub.setAttribute('target', '_blank');
+        elements.contactGithub.setAttribute('rel', 'noopener noreferrer');
+    } else if (elements.contactGithub) {
+        console.warn('GitHub URL not found in contact data');
     }
 }
 
