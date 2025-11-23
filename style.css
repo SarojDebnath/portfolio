@@ -153,6 +153,20 @@ html {
     border-radius: 0.5rem;
 }
 
+/* Profile image without background/border */
+.profile-image-no-bg {
+    width: auto;
+    height: auto;
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: contain;
+    /* No border, no shadow, no rounded corners */
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .tool-badge {
@@ -162,6 +176,11 @@ html {
     
     .experience-item {
         padding-left: 1.5rem;
+    }
+    
+    .profile-image-no-bg {
+        max-width: 200px;
+        max-height: 200px;
     }
 }
 
