@@ -153,25 +153,47 @@ function createProjectCard(project) {
         ).join('');
     }
     
+    // Video embedding with autoplay
     let videoHTML = '';
     if (project.videoUrl) {
-        videoHTML = `
-            <div class="mt-4">
-                <a href="${project.videoUrl}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold">
-                    <i class="fas fa-play-circle mr-2"></i>
-                    Watch Demo
-                </a>
-            </div>
-        `;
+        const videoId = extractYouTubeId(project.videoUrl);
+        if (videoId) {
+            // Embedded YouTube video with autoplay, mute, and loop
+            videoHTML = `
+                <div class="mt-4">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&rel=0" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            `;
+        } else {
+            // Fallback to link if not YouTube
+            videoHTML = `
+                <div class="mt-4">
+                    <a href="${project.videoUrl}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold">
+                        <i class="fas fa-play-circle mr-2"></i>
+                        Watch Demo
+                    </a>
+                </div>
+            `;
+        }
     }
     
     let githubHTML = '';
     if (project.githubUrl) {
         githubHTML = `
-            <a href="${project.githubUrl}" target="_blank" class="inline-flex items-center text-gray-600 hover:text-gray-800 font-semibold ml-4">
-                <i class="fab fa-github mr-2"></i>
-                View Code
-            </a>
+            <div class="mt-4">
+                <a href="${project.githubUrl}" target="_blank" class="inline-flex items-center text-gray-600 hover:text-gray-800 font-semibold">
+                    <i class="fab fa-github mr-2"></i>
+                    View Code
+                </a>
+            </div>
         `;
     }
     
@@ -182,14 +204,32 @@ function createProjectCard(project) {
             <div class="mb-4">
                 ${toolsHTML}
             </div>
-            <div class="flex items-center">
-                ${videoHTML}
-                ${githubHTML}
-            </div>
+            ${videoHTML}
+            ${githubHTML}
         </div>
     `;
     
     return card;
+}
+
+// Helper function to extract YouTube video ID
+function extractYouTubeId(url) {
+    if (!url) return null;
+    
+    // Handle various YouTube URL formats
+    const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+        /youtube\.com\/v\/([^&\n?#]+)/
+    ];
+    
+    for (const pattern of patterns) {
+        const match = url.match(pattern);
+        if (match && match[1]) {
+            return match[1];
+        }
+    }
+    
+    return null;
 }
 
 // ============================================
