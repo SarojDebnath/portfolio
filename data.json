@@ -2,50 +2,58 @@
   "hero": {
     "intro": "Building intelligent robotic systems with advanced computer vision and deploying production-ready LLM solutions. Expert in bridging cutting-edge AI research with real-world industrial applications, from microscopic defect detection to large-scale language model operations."
   },
-  "projects": [
-    {
-      "title": "Automatic Optical Fiber Inspection with UR5",
-      "description": "Engineered a robotic vision system integrating UR5 collaborative robot with deep learning-based anomaly detection to identify microscopic dust particles (15–25µm) on optical fiber connectors. Achieved 98% detection accuracy with sub-second processing time, reducing manual inspection costs by 85%.",
-      "tools": ["UR5 Robot", "ROS", "Deep Learning", "Python", "OpenCV", "PyTorch", "Computer Vision"],
-      "videoUrl": "https://www.youtube.com/watch?v=example1",
-      "githubUrl": ""
-    },
-    {
-      "title": "LLM-Powered RAG Chatbot for Enterprise FOB Escalation",
-      "description": "Developed and deployed a production-grade RAG (Retrieval-Augmented Generation) chatbot with intelligent decision-making for Front-of-Building ticket escalation. Implemented LLMOps pipeline with monitoring, version control, and A/B testing. Reduced escalation response time by 60% and improved accuracy to 92%.",
-      "tools": ["LangChain", "RAG", "OpenAI API", "LLMOps", "Vector DBs", "Prompt Engineering", "MLflow", "Python"],
-      "videoUrl": "",
-      "githubUrl": ""
-    },
-    {
-      "title": "Automated PCB Inspection System (VLM + ResNet + PatchVORE)",
-      "description": "Designed an advanced AOI system combining Vision-Language Models with ResNet and PatchVORE architecture for multi-defect PCB inspection. Implemented zero-shot defect classification using VLMs, achieving 95%+ accuracy across 12 defect categories without fine-tuning.",
-      "tools": ["Vision-Language Models", "ResNet", "PatchVORE", "PyTorch", "CLIP", "Computer Vision", "MLOps"],
-      "videoUrl": "https://www.youtube.com/watch?v=example2",
-      "githubUrl": ""
-    },
-    {
-      "title": "Interactive Face-Tracking Robot with Real-Time Vision",
-      "description": "Built an engaging robotic system featuring real-time face detection, tracking, and emotion recognition. Integrated servo control with computer vision pipeline for natural head movements and human interaction. Optimized for edge deployment with <100ms latency.",
-      "tools": ["Computer Vision", "Face Detection", "OpenCV", "Arduino", "Python", "Real-Time Processing", "Edge AI"],
-      "videoUrl": "https://www.youtube.com/watch?v=example3",
-      "githubUrl": ""
-    },
-    {
-      "title": "LLM Fine-Tuning & Deployment Pipeline",
-      "description": "Built end-to-end LLMOps pipeline for fine-tuning and deploying custom language models. Implemented automated evaluation, prompt versioning, cost optimization, and observability. Reduced inference costs by 40% while maintaining performance through quantization and efficient serving strategies.",
-      "tools": ["Hugging Face", "LoRA", "PEFT", "vLLM", "Weights & Biases", "Docker", "Kubernetes", "LLMOps"],
-      "videoUrl": "",
-      "githubUrl": ""
-    },
-    {
-      "title": "Multi-Camera 3D Object Tracking for Robotics",
-      "description": "Developed a multi-camera system for 3D object tracking and pose estimation in robotic manipulation tasks. Implemented SLAM and visual odometry for accurate spatial awareness. System enables robots to track and grasp objects in dynamic environments with 95% success rate.",
-      "tools": ["SLAM", "3D Vision", "Camera Calibration", "Point Cloud", "ROS", "Python", "C++"],
-      "videoUrl": "",
-      "githubUrl": ""
-    }
-  ],
+  "profile": {
+    "image": "data/my_image.jpg",
+    "intro": "Building intelligent robotic systems with advanced computer vision and deploying production-ready LLM solutions. Expert in bridging cutting-edge AI research with real-world industrial applications, from microscopic defect detection to large-scale language model operations."
+  },
+  "projects": {
+    "robotics": [
+      {
+        "title": "Automatic Optical Fiber Inspection with UR5",
+        "description": "Engineered a robotic vision system integrating UR5 collaborative robot with deep learning-based anomaly detection to identify microscopic dust particles (15–25µm) on optical fiber connectors. Achieved 98% detection accuracy with sub-second processing time, reducing manual inspection costs by 85%.",
+        "tools": ["UR5 Robot", "ROS", "Deep Learning", "Python", "OpenCV", "PyTorch", "Computer Vision"],
+        "videoUrl": "https://www.youtube.com/watch?v=example1",
+        "githubUrl": ""
+      },
+      {
+        "title": "Automated PCB Inspection System (VLM + ResNet + PatchVORE)",
+        "description": "Designed an advanced AOI system combining Vision-Language Models with ResNet and PatchVORE architecture for multi-defect PCB inspection. Implemented zero-shot defect classification using VLMs, achieving 95%+ accuracy across 12 defect categories without fine-tuning.",
+        "tools": ["Vision-Language Models", "ResNet", "PatchVORE", "PyTorch", "CLIP", "Computer Vision", "MLOps"],
+        "videoUrl": "https://www.youtube.com/watch?v=example2",
+        "githubUrl": ""
+      },
+      {
+        "title": "Interactive Face-Tracking Robot with Real-Time Vision",
+        "description": "Built an engaging robotic system featuring real-time face detection, tracking, and emotion recognition. Integrated servo control with computer vision pipeline for natural head movements and human interaction. Optimized for edge deployment with <100ms latency.",
+        "tools": ["Computer Vision", "Face Detection", "OpenCV", "Arduino", "Python", "Real-Time Processing", "Edge AI"],
+        "videoUrl": "https://www.youtube.com/watch?v=example3",
+        "githubUrl": ""
+      },
+      {
+        "title": "Multi-Camera 3D Object Tracking for Robotics",
+        "description": "Developed a multi-camera system for 3D object tracking and pose estimation in robotic manipulation tasks. Implemented SLAM and visual odometry for accurate spatial awareness. System enables robots to track and grasp objects in dynamic environments with 95% success rate.",
+        "tools": ["SLAM", "3D Vision", "Camera Calibration", "Point Cloud", "ROS", "Python", "C++"],
+        "videoUrl": "",
+        "githubUrl": ""
+      }
+    ],
+    "llmops": [
+      {
+        "title": "LLM-Powered RAG Chatbot for Enterprise FOB Escalation",
+        "description": "Developed and deployed a production-grade RAG (Retrieval-Augmented Generation) chatbot with intelligent decision-making for Front-of-Building ticket escalation. Implemented LLMOps pipeline with monitoring, version control, and A/B testing. Reduced escalation response time by 60% and improved accuracy to 92%.",
+        "tools": ["LangChain", "RAG", "OpenAI API", "LLMOps", "Vector DBs", "Prompt Engineering", "MLflow", "Python"],
+        "videoUrl": "",
+        "githubUrl": ""
+      },
+      {
+        "title": "LLM Fine-Tuning & Deployment Pipeline",
+        "description": "Built end-to-end LLMOps pipeline for fine-tuning and deploying custom language models. Implemented automated evaluation, prompt versioning, cost optimization, and observability. Reduced inference costs by 40% while maintaining performance through quantization and efficient serving strategies.",
+        "tools": ["Hugging Face", "LoRA", "PEFT", "vLLM", "Weights & Biases", "Docker", "Kubernetes", "LLMOps"],
+        "videoUrl": "",
+        "githubUrl": ""
+      }
+    ]
+  },
   "udemy": {
     "totalHours": 120,
     "totalStudents": 15000,

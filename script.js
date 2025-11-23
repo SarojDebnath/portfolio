@@ -13,7 +13,8 @@ const CONFIG = {
 // DOM ELEMENTS
 // ============================================
 const elements = {
-    projectsContainer: document.getElementById('projects-container'),
+    roboticsProjectsContainer: document.getElementById('robotics-projects-container'),
+    llmopsProjectsContainer: document.getElementById('llmops-projects-container'),
     experienceContainer: document.getElementById('experience-container'),
     papersContainer: document.getElementById('papers-container'),
     udemyHours: document.getElementById('udemy-hours'),
@@ -24,6 +25,8 @@ const elements = {
     contactLinkedIn: document.getElementById('contact-linkedin'),
     contactGithub: document.getElementById('contact-github'),
     heroIntro: document.getElementById('hero-intro'),
+    profileImage: document.getElementById('profile-image'),
+    profileIntro: document.getElementById('profile-intro'),
     currentYear: document.getElementById('current-year')
 };
 
@@ -59,6 +62,7 @@ async function loadData() {
         
         // Populate all sections with data
         populateHero(data.hero);
+        populateProfile(data.profile);
         populateProjects(data.projects);
         populateUdemy(data.udemy);
         populateExperience(data.experience);
@@ -76,7 +80,21 @@ async function loadData() {
 // ============================================
 function populateHero(heroData) {
     if (heroData && heroData.intro) {
-        elements.heroIntro.textContent = heroData.intro;
+        // Hero intro is now static in HTML, but we can update if needed
+    }
+}
+
+// ============================================
+// PROFILE SECTION
+// ============================================
+function populateProfile(profileData) {
+    if (profileData) {
+        if (profileData.image && elements.profileImage) {
+            elements.profileImage.src = profileData.image;
+        }
+        if (profileData.intro && elements.profileIntro) {
+            elements.profileIntro.textContent = profileData.intro;
+        }
     }
 }
 
@@ -84,17 +102,34 @@ function populateHero(heroData) {
 // PROJECTS SECTION
 // ============================================
 // **UPDATE data.json to modify your projects**
-function populateProjects(projects) {
-    if (!projects || projects.length === 0) {
-        elements.projectsContainer.innerHTML = '<p class="text-gray-600 text-center col-span-full">No projects available.</p>';
+function populateProjects(projectsData) {
+    // Handle new structure with separated robotics and llmops
+    if (!projectsData) {
         return;
     }
     
-    elements.projectsContainer.innerHTML = '';
+    // Populate Robotics Projects
+    if (projectsData.robotics && Array.isArray(projectsData.robotics)) {
+        populateProjectCategory(projectsData.robotics, elements.roboticsProjectsContainer);
+    }
+    
+    // Populate LLMOps Projects
+    if (projectsData.llmops && Array.isArray(projectsData.llmops)) {
+        populateProjectCategory(projectsData.llmops, elements.llmopsProjectsContainer);
+    }
+}
+
+function populateProjectCategory(projects, container) {
+    if (!projects || projects.length === 0) {
+        container.innerHTML = '<p class="text-gray-600 text-center col-span-full">No projects available.</p>';
+        return;
+    }
+    
+    container.innerHTML = '';
     
     projects.forEach((project, index) => {
         const projectCard = createProjectCard(project);
-        elements.projectsContainer.appendChild(projectCard);
+        container.appendChild(projectCard);
         
         // Stagger animation
         setTimeout(() => {
@@ -346,29 +381,44 @@ function populateContact(contact) {
 // ============================================
 function showFallbackContent() {
     // Show a user-friendly error message
-    elements.projectsContainer.innerHTML = `
-        <div class="col-span-full error-message">
-            <h3 class="font-bold mb-2">Unable to load content</h3>
-            <p>We couldn't load the data file. Please ensure <code>data.json</code> exists and is properly formatted.</p>
-        </div>
-    `;
+    if (elements.roboticsProjectsContainer) {
+        elements.roboticsProjectsContainer.innerHTML = `
+            <div class="col-span-full error-message">
+                <h3 class="font-bold mb-2">Unable to load content</h3>
+                <p>We couldn't load the data file. Please ensure <code>data.json</code> exists and is properly formatted.</p>
+            </div>
+        `;
+    }
     
-    elements.experienceContainer.innerHTML = `
-        <div class="error-message">
-            <p>Experience data could not be loaded.</p>
-        </div>
-    `;
+    if (elements.llmopsProjectsContainer) {
+        elements.llmopsProjectsContainer.innerHTML = `
+            <div class="col-span-full error-message">
+                <h3 class="font-bold mb-2">Unable to load content</h3>
+                <p>We couldn't load the data file. Please ensure <code>data.json</code> exists and is properly formatted.</p>
+            </div>
+        `;
+    }
     
-    elements.papersContainer.innerHTML = `
-        <div class="error-message">
-            <p>Publications data could not be loaded.</p>
-        </div>
-    `;
+    if (elements.experienceContainer) {
+        elements.experienceContainer.innerHTML = `
+            <div class="error-message">
+                <p>Experience data could not be loaded.</p>
+            </div>
+        `;
+    }
+    
+    if (elements.papersContainer) {
+        elements.papersContainer.innerHTML = `
+            <div class="error-message">
+                <p>Publications data could not be loaded.</p>
+            </div>
+        `;
+    }
     
     // Set default contact info
-    elements.contactEmail.textContent = 'contact@example.com';
-    elements.contactLinkedIn.textContent = 'LinkedIn';
-    elements.contactGithub.textContent = 'GitHub';
+    if (elements.contactEmail) elements.contactEmail.textContent = 'contact@example.com';
+    if (elements.contactLinkedIn) elements.contactLinkedIn.textContent = 'LinkedIn';
+    if (elements.contactGithub) elements.contactGithub.textContent = 'GitHub';
 }
 
 // ============================================

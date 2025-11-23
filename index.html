@@ -22,18 +22,23 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <a href="#home" class="text-2xl font-bold text-blue-600">SD</a>
+                    <a href="#home" class="flex flex-col">
+                        <span class="text-xl font-bold text-gray-900">SAROJ DEBNATH</span>
+                        <span class="text-xs text-gray-600">Robotics & LLMOps Engineer</span>
+                    </a>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                        <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
-                        <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
-                        <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
-                        <a href="#papers" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Papers</a>
+                        <a href="#robotics-portfolio" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Robotics Portfolio</a>
+                        <a href="#llmops-portfolio" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">LLMOps Portfolio</a>
+                        <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About Me</a>
                         <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                        <a href="https://www.linkedin.com/in/robotics-vision-automation-saroj/" target="_blank" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -50,48 +55,142 @@
         <div id="mobile-menu" class="hidden md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
                 <a href="#home" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#projects" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Projects</a>
-                <a href="#skills" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#robotics-portfolio" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Robotics Portfolio</a>
+                <a href="#llmops-portfolio" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">LLMOps Portfolio</a>
+                <a href="#about" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">About Me</a>
                 <a href="#experience" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                <a href="#papers" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Papers</a>
                 <a href="#contact" class="mobile-nav-link block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-20 min-h-screen flex items-center bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section id="home" class="pt-20 min-h-screen flex items-center relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 overflow-hidden">
+        <!-- Animated Circuit Background -->
+        <div class="absolute inset-0 opacity-20">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <path d="M0,50 L100,50 M50,0 L50,100" stroke="#3B82F6" stroke-width="1" fill="none"/>
+                        <circle cx="50" cy="50" r="3" fill="#60A5FA"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#circuit)"/>
+            </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
             <div class="text-center animate-fade-in">
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-4">
-                    Saroj Debnath
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">
+                    INNOVATING AT THE INTERSECTION OF
                 </h1>
-                <h2 class="text-2xl md:text-3xl text-blue-600 font-semibold mb-6">
-                    Robotic Vision Engineer & LLMOps Specialist
-                </h2>
-                <p id="hero-intro" class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
-                    Building intelligent robotic systems with advanced computer vision and deploying production-ready LLM solutions. 
-                    Bridging the gap between cutting-edge AI research and real-world industrial applications.
+                <h1 class="text-5xl md:text-7xl font-bold text-blue-400 mb-6">
+                    ROBOTICS AND AI
+                </h1>
+                <p id="hero-intro" class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+                    Bridging physical automation with intelligent language models for the next generation of smart systems
                 </p>
-                <a href="#projects" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg">
-                    See My Work <i class="fas fa-arrow-down ml-2"></i>
-                </a>
+                
+                <!-- Two Separate CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#robotics-portfolio" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-robot mr-2"></i>EXPLORE ROBOTICS PROJECTS
+                    </a>
+                    <a href="#llmops-portfolio" class="inline-block bg-white text-blue-600 border-2 border-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-brain mr-2"></i>DISCOVER LLMOPS SOLUTIONS
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white">
+    <!-- Brief Introduction Section with Profile Picture -->
+    <section id="about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Featured Projects</h2>
-            <p class="text-center text-gray-600 mb-12">Innovative solutions in robotic vision and LLM operations</p>
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Brief Introduction</h2>
             
-            <!-- Projects will be loaded dynamically from data.json -->
-            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Fallback content if JSON fails to load -->
-                <div class="project-card bg-gray-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <!-- Profile Picture -->
+                <div class="flex-shrink-0">
+                    <img id="profile-image" src="data/my_image.jpg" alt="Saroj Debnath" class="w-48 h-48 rounded-full object-cover shadow-xl border-4 border-blue-600">
+                </div>
+                
+                <!-- Introduction Text -->
+                <div class="flex-1">
+                    <p id="profile-intro" class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Building intelligent robotic systems with advanced computer vision and deploying production-ready LLM solutions. Expert in bridging cutting-edge AI research with real-world industrial applications, from microscopic defect detection to large-scale language model operations.
+                    </p>
+                    
+                    <!-- Portfolio Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <!-- Robotics Portfolio Card -->
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-robot text-4xl text-blue-600 mr-4"></i>
+                                <h3 class="text-xl font-bold text-gray-900">Robotics Portfolio</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Advanced robotic vision systems, automation solutions, and industrial applications.</p>
+                            <a href="#robotics-portfolio" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                                View Projects <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- LLMOps Portfolio Card -->
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-100 rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-brain text-4xl text-purple-600 mr-4"></i>
+                                <h3 class="text-xl font-bold text-gray-900">LLMOps Portfolio</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Production-ready LLM solutions, RAG systems, and enterprise AI applications.</p>
+                            <a href="#llmops-portfolio" class="inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors">
+                                View Projects <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Robotics Portfolio Section -->
+    <section id="robotics-portfolio" class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center mb-4">
+                    <i class="fas fa-robot text-5xl text-blue-600 mr-4"></i>
+                    <h2 class="text-4xl font-bold text-gray-900">Robotics Portfolio</h2>
+                </div>
+                <p class="text-gray-600 text-lg">Advanced robotic vision systems and automation solutions</p>
+            </div>
+            
+            <!-- Robotics Projects will be loaded dynamically from data.json -->
+            <div id="robotics-projects-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Loading Projects...</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Loading Robotics Projects...</h3>
+                        <p class="text-gray-600 mb-4">Please wait while we load the project data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LLMOps Portfolio Section -->
+    <section id="llmops-portfolio" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center mb-4">
+                    <i class="fas fa-brain text-5xl text-purple-600 mr-4"></i>
+                    <h2 class="text-4xl font-bold text-gray-900">LLMOps Portfolio</h2>
+                </div>
+                <p class="text-gray-600 text-lg">Production-ready LLM solutions and enterprise AI applications</p>
+            </div>
+            
+            <!-- LLMOps Projects will be loaded dynamically from data.json -->
+            <div id="llmops-projects-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Loading LLMOps Projects...</h3>
                         <p class="text-gray-600 mb-4">Please wait while we load the project data.</p>
                     </div>
                 </div>
