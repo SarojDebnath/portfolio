@@ -67,6 +67,15 @@ async function loadData() {
         
         const data = await response.json();
         
+        // Debug: Check if elements exist
+        console.log('Loading data...', {
+            hasRoboticsContainer: !!elements.roboticsProjectsContainer,
+            hasLLMOpsContainer: !!elements.llmopsProjectsContainer,
+            hasUdemyMinutes: !!elements.udemyMinutes,
+            projectsData: data.projects,
+            udemyData: data.udemy
+        });
+        
         // Populate all sections with data
         populateHero(data.hero);
         populateProfile(data.profile);
@@ -112,21 +121,39 @@ function populateProfile(profileData) {
 function populateProjects(projectsData) {
     // Handle new structure with separated robotics and llmops
     if (!projectsData) {
+        console.error('No projects data provided');
         return;
     }
     
     // Populate Robotics Projects
     if (projectsData.robotics && Array.isArray(projectsData.robotics)) {
-        populateProjectCategory(projectsData.robotics, elements.roboticsProjectsContainer);
+        if (elements.roboticsProjectsContainer) {
+            populateProjectCategory(projectsData.robotics, elements.roboticsProjectsContainer);
+        } else {
+            console.error('roboticsProjectsContainer element not found');
+        }
+    } else {
+        console.warn('No robotics projects found in data');
     }
     
     // Populate LLMOps Projects
     if (projectsData.llmops && Array.isArray(projectsData.llmops)) {
-        populateProjectCategory(projectsData.llmops, elements.llmopsProjectsContainer);
+        if (elements.llmopsProjectsContainer) {
+            populateProjectCategory(projectsData.llmops, elements.llmopsProjectsContainer);
+        } else {
+            console.error('llmopsProjectsContainer element not found');
+        }
+    } else {
+        console.warn('No llmops projects found in data');
     }
 }
 
 function populateProjectCategory(projects, container) {
+    if (!container) {
+        console.error('Container element not found');
+        return;
+    }
+    
     if (!projects || projects.length === 0) {
         container.innerHTML = '<p class="text-gray-600 text-center col-span-full">No projects available.</p>';
         return;
@@ -135,14 +162,20 @@ function populateProjectCategory(projects, container) {
     container.innerHTML = '';
     
     projects.forEach((project, index) => {
-        const projectCard = createProjectCard(project);
-        container.appendChild(projectCard);
-        
-        // Stagger animation
-        setTimeout(() => {
-            projectCard.style.opacity = '1';
-            projectCard.style.transform = 'translateY(0)';
-        }, index * 100);
+        try {
+            const projectCard = createProjectCard(project);
+            container.appendChild(projectCard);
+            
+            // Stagger animation
+            setTimeout(() => {
+                if (projectCard) {
+                    projectCard.style.opacity = '1';
+                    projectCard.style.transform = 'translateY(0)';
+                }
+            }, index * 100);
+        } catch (error) {
+            console.error('Error creating project card:', error, project);
+        }
     });
 }
 
@@ -250,12 +283,18 @@ function populateUdemy(udemyData) {
     }
     
     // Display minutes taught (formatted with commas)
-    if (elements.udemyMinutes && udemyData.totalMinutes) {
-        const formattedMinutes = udemyData.totalMinutes.toLocaleString('en-US', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
-        elements.udemyMinutes.textContent = formattedMinutes;
+    if (elements.udemyMinutes) {
+        if (udemyData.totalMinutes !== undefined && udemyData.totalMinutes !== null) {
+            const formattedMinutes = udemyData.totalMinutes.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            elements.udemyMinutes.textContent = formattedMinutes;
+        } else {
+            elements.udemyMinutes.textContent = 'N/A';
+        }
+    } else {
+        console.error('udemyMinutes element not found');
     }
     
     // Load graph image
