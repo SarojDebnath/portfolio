@@ -17,6 +17,7 @@ let elements = {};
 // Review slider state
 let currentReviewIndex = 0;
 let reviewImages = [];
+let reviewAutoPlayInterval = null;
 
 // Initialize DOM elements
 function initializeElements() {
@@ -385,10 +386,38 @@ function initializeReviewSlider() {
         });
     }
     
-    // Auto-play slider (optional - uncomment if desired)
-    // setInterval(() => {
-    //     goToReview(currentReviewIndex + 1);
-    // }, 5000); // Change slide every 5 seconds
+    // Auto-play slider - continuously rotate
+    startReviewAutoPlay();
+    
+    // Pause on hover for better UX
+    const sliderContainer = elements.reviewSlider.closest('.review-slider-container');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', stopReviewAutoPlay);
+        sliderContainer.addEventListener('mouseleave', startReviewAutoPlay);
+    }
+}
+
+// Start auto-play for review slider
+function startReviewAutoPlay() {
+    // Clear any existing interval
+    if (reviewAutoPlayInterval) {
+        clearInterval(reviewAutoPlayInterval);
+    }
+    
+    // Start auto-play - change slide every 4 seconds
+    reviewAutoPlayInterval = setInterval(() => {
+        if (reviewImages.length > 0) {
+            goToReview(currentReviewIndex + 1);
+        }
+    }, 4000); // 4 seconds per slide
+}
+
+// Stop auto-play for review slider
+function stopReviewAutoPlay() {
+    if (reviewAutoPlayInterval) {
+        clearInterval(reviewAutoPlayInterval);
+        reviewAutoPlayInterval = null;
+    }
 }
 
 // Show specific review
