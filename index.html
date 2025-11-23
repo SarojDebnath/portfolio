@@ -300,11 +300,105 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; <span id="current-year"></span> Saroj Debnath. All rights reserved.</p>
-            <p class="mt-2 text-gray-400">Built with HTML, Tailwind CSS, and JavaScript</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-4">
+                <p>&copy; <span id="current-year"></span> Saroj Debnath. All rights reserved.</p>
+                <p class="mt-2 text-gray-400">Built with HTML, Tailwind CSS, and JavaScript</p>
+            </div>
+            <div class="text-center text-sm text-gray-400">
+                <a href="#impressum" class="hover:text-blue-400 transition-colors">Impressum / Legal Notice</a>
+                <span class="mx-2">•</span>
+                <a href="#privacy" class="hover:text-blue-400 transition-colors">Privacy Policy</a>
+            </div>
         </div>
     </footer>
+
+    <!-- Impressum Modal (Hidden by default) -->
+    <div id="impressum-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">Impressum / Legal Notice</h2>
+                    <button onclick="closeModal('impressum-modal')" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                
+                <div class="space-y-4 text-gray-700">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Information according to § 5 TMG (German Telemedia Act)</h3>
+                        <p><strong>Name:</strong> Saroj Debnath</p>
+                        <p><strong>Address:</strong> Ludwig Chronegk str 9, Thüringen, Germany</p>
+                        <p><strong>Email:</strong> <a href="mailto:sarojdebnath2405@gmail.com" class="text-blue-600 hover:underline">sarojdebnath2405@gmail.com</a></p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Contact</h3>
+                        <p>For inquiries, please use the contact information provided above or reach out via the contact section on this website.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Disclaimer</h3>
+                        <p><strong>Liability for Content:</strong> The contents of this website have been created with the utmost care. However, I cannot guarantee the accuracy, completeness, or timeliness of the content. As a service provider, I am responsible for my own content on these pages according to § 7 Para. 1 TMG.</p>
+                        <p class="mt-2"><strong>Liability for Links:</strong> This website contains links to external websites over which I have no control. Therefore, I cannot accept any liability for this external content. The respective provider or operator of the linked pages is always responsible for the content of these pages.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Copyright</h3>
+                        <p>The content and works created by the site operator on these pages are subject to copyright law. Duplication, processing, distribution, and any form of commercialization of such material beyond the scope of copyright law requires written consent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal (Hidden by default) -->
+    <div id="privacy-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">Privacy Policy</h2>
+                    <button onclick="closeModal('privacy-modal')" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                
+                <div class="space-y-4 text-gray-700">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Data Collection</h3>
+                        <p>This is a static website hosted on GitHub Pages. No personal data is actively collected or stored by me.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">GitHub Pages</h3>
+                        <p>This website is hosted on GitHub Pages. GitHub may collect visitor information including IP addresses. Please refer to <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" class="text-blue-600 hover:underline">GitHub's Privacy Statement</a> for more information.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Cookies</h3>
+                        <p>This website does not use cookies or tracking technologies.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">External Links</h3>
+                        <p>This website contains links to external websites (LinkedIn, GitHub, etc.). When you click these links, you leave this website and are subject to the privacy policies of those platforms.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Your Rights</h3>
+                        <p>Under GDPR, you have the right to access, rectify, delete, or restrict processing of your personal data. Since this website does not collect personal data, these rights primarily apply to data collected by GitHub Pages.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Contact</h3>
+                        <p>For privacy-related questions, please contact: <a href="mailto:sarojdebnath2405@gmail.com" class="text-blue-600 hover:underline">sarojdebnath2405@gmail.com</a></p>
+                    </div>
+                    
+                    <p class="text-sm text-gray-500 mt-4">Last updated: November 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="script.js"></script>

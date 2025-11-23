@@ -495,3 +495,49 @@ function initLazyLoading() {
 // Initialize lazy loading after content loads
 setTimeout(initLazyLoading, 1000);
 
+// ============================================
+// MODAL FUNCTIONS (for Impressum & Privacy)
+// ============================================
+
+// Open modal when clicking footer links
+document.addEventListener('DOMContentLoaded', () => {
+    // Impressum link
+    const impressumLink = document.querySelector('a[href="#impressum"]');
+    if (impressumLink) {
+        impressumLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('impressum-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    }
+    
+    // Privacy link
+    const privacyLink = document.querySelector('a[href="#privacy"]');
+    if (privacyLink) {
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('privacy-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    // Close modals when clicking outside
+    document.getElementById('impressum-modal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'impressum-modal') {
+            closeModal('impressum-modal');
+        }
+    });
+    
+    document.getElementById('privacy-modal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'privacy-modal') {
+            closeModal('privacy-modal');
+        }
+    });
+});
+
+// Function to close modals
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.add('hidden');
+    document.body.style.overflow = 'auto'; // Restore scrolling
+}
+
