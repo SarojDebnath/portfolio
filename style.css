@@ -157,8 +157,8 @@ html {
 .profile-image-no-bg {
     width: auto;
     height: auto;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 200px;
+    max-height: 200px;
     object-fit: contain;
     /* No border, no shadow, no rounded corners */
     border: none;
