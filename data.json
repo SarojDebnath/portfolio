@@ -55,12 +55,19 @@
     ]
   },
   "udemy": {
-    "totalHours": 120,
+    "totalMinutes": 42443.07,
+    "totalHours": 707.38,
     "totalStudents": 15000,
     "engagement": "85%",
-    "feedback": [
-      "feedback1.jpg",
-      "feedback2.jpg"
+    "graphImage": "data/minutes_taught.png",
+    "mapImage": "data/udemy_map.png",
+    "reviews": [
+      "data/reviews/1.png",
+      "data/reviews/2.png",
+      "data/reviews/3.png",
+      "data/reviews/4.png",
+      "data/reviews/5.png",
+      "data/reviews/6.png"
     ]
   },
   "experience": [

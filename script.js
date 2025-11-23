@@ -17,10 +17,13 @@ const elements = {
     llmopsProjectsContainer: document.getElementById('llmops-projects-container'),
     experienceContainer: document.getElementById('experience-container'),
     papersContainer: document.getElementById('papers-container'),
-    udemyHours: document.getElementById('udemy-hours'),
-    udemyStudents: document.getElementById('udemy-students'),
-    udemyEngagement: document.getElementById('udemy-engagement'),
-    feedbackContainer: document.getElementById('feedback-container'),
+    udemyMinutes: document.getElementById('udemy-minutes'),
+    udemyGraph: document.getElementById('udemy-graph'),
+    udemyMap: document.getElementById('udemy-map'),
+    reviewSlider: document.getElementById('review-slider'),
+    reviewDots: document.getElementById('review-dots'),
+    reviewPrev: document.getElementById('review-prev'),
+    reviewNext: document.getElementById('review-next'),
     contactEmail: document.getElementById('contact-email'),
     contactLinkedIn: document.getElementById('contact-linkedin'),
     contactGithub: document.getElementById('contact-github'),
@@ -29,6 +32,10 @@ const elements = {
     profileIntro: document.getElementById('profile-intro'),
     currentYear: document.getElementById('current-year')
 };
+
+// Review slider state
+let currentReviewIndex = 0;
+let reviewImages = [];
 
 // ============================================
 // INITIALIZATION
@@ -238,35 +245,145 @@ function extractYouTubeId(url) {
 // **UPDATE data.json udemy section to modify stats**
 function populateUdemy(udemyData) {
     if (!udemyData) {
-        elements.udemyHours.textContent = 'N/A';
-        elements.udemyStudents.textContent = 'N/A';
-        elements.udemyEngagement.textContent = 'N/A';
+        if (elements.udemyMinutes) elements.udemyMinutes.textContent = 'N/A';
         return;
     }
     
-    // Animate numbers
-    animateNumber(elements.udemyHours, 0, udemyData.totalHours || 0, 2000);
-    animateNumber(elements.udemyStudents, 0, udemyData.totalStudents || 0, 2000);
-    elements.udemyEngagement.textContent = udemyData.engagement || 'N/A';
+    // Display minutes taught (formatted with commas)
+    if (elements.udemyMinutes && udemyData.totalMinutes) {
+        const formattedMinutes = udemyData.totalMinutes.toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+        elements.udemyMinutes.textContent = formattedMinutes;
+    }
     
-    // Load feedback screenshots
-    if (udemyData.feedback && udemyData.feedback.length > 0) {
-        elements.feedbackContainer.innerHTML = '';
-        udemyData.feedback.forEach(feedbackItem => {
-            const img = document.createElement('img');
-            img.src = feedbackItem;
-            img.alt = 'Student Feedback';
-            img.className = 'feedback-image';
-            img.loading = 'lazy';
-            
-            // Error handling for images
-            img.onerror = function() {
-                this.style.display = 'none';
-            };
-            
-            elements.feedbackContainer.appendChild(img);
+    // Load graph image
+    if (elements.udemyGraph && udemyData.graphImage) {
+        elements.udemyGraph.src = udemyData.graphImage;
+        elements.udemyGraph.onerror = function() {
+            this.style.display = 'none';
+        };
+    }
+    
+    // Load map image
+    if (elements.udemyMap && udemyData.mapImage) {
+        elements.udemyMap.src = udemyData.mapImage;
+        elements.udemyMap.onerror = function() {
+            this.style.display = 'none';
+        };
+    }
+    
+    // Load reviews and initialize slider
+    if (udemyData.reviews && udemyData.reviews.length > 0) {
+        reviewImages = udemyData.reviews;
+        initializeReviewSlider();
+    }
+}
+
+// Initialize review slider
+function initializeReviewSlider() {
+    if (!elements.reviewSlider || reviewImages.length === 0) return;
+    
+    // Clear existing content
+    elements.reviewSlider.innerHTML = '';
+    if (elements.reviewDots) elements.reviewDots.innerHTML = '';
+    
+    // Create review slides
+    reviewImages.forEach((reviewPath, index) => {
+        // Create slide
+        const slide = document.createElement('div');
+        slide.className = 'review-slide';
+        slide.dataset.index = index;
+        
+        const img = document.createElement('img');
+        img.src = reviewPath;
+        img.alt = `Student Review ${index + 1}`;
+        img.className = 'review-image';
+        img.loading = 'lazy';
+        
+        img.onerror = function() {
+            slide.style.display = 'none';
+        };
+        
+        slide.appendChild(img);
+        elements.reviewSlider.appendChild(slide);
+        
+        // Create dot indicator
+        if (elements.reviewDots) {
+            const dot = document.createElement('button');
+            dot.className = 'review-dot';
+            dot.dataset.index = index;
+            dot.setAttribute('aria-label', `Go to review ${index + 1}`);
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToReview(index));
+            elements.reviewDots.appendChild(dot);
+        }
+    });
+    
+    // Set initial slide
+    showReview(0);
+    
+    // Add navigation event listeners
+    if (elements.reviewPrev) {
+        elements.reviewPrev.addEventListener('click', () => {
+            goToReview(currentReviewIndex - 1);
         });
     }
+    
+    if (elements.reviewNext) {
+        elements.reviewNext.addEventListener('click', () => {
+            goToReview(currentReviewIndex + 1);
+        });
+    }
+    
+    // Auto-play slider (optional - uncomment if desired)
+    // setInterval(() => {
+    //     goToReview(currentReviewIndex + 1);
+    // }, 5000); // Change slide every 5 seconds
+}
+
+// Show specific review
+function showReview(index) {
+    const slides = elements.reviewSlider.querySelectorAll('.review-slide');
+    const dots = elements.reviewDots ? elements.reviewDots.querySelectorAll('.review-dot') : [];
+    
+    if (slides.length === 0) return;
+    
+    // Hide all slides
+    slides.forEach(slide => {
+        slide.classList.remove('active');
+    });
+    
+    // Show current slide
+    if (slides[index]) {
+        slides[index].classList.add('active');
+    }
+    
+    // Update dots
+    dots.forEach((dot, i) => {
+        if (i === index) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Navigate to specific review
+function goToReview(index) {
+    if (reviewImages.length === 0) return;
+    
+    // Handle wrap-around
+    if (index < 0) {
+        currentReviewIndex = reviewImages.length - 1;
+    } else if (index >= reviewImages.length) {
+        currentReviewIndex = 0;
+    } else {
+        currentReviewIndex = index;
+    }
+    
+    showReview(currentReviewIndex);
 }
 
 // Animate number counting up
@@ -454,6 +571,9 @@ function showFallbackContent() {
             </div>
         `;
     }
+    
+    // Set default Udemy values
+    if (elements.udemyMinutes) elements.udemyMinutes.textContent = 'N/A';
     
     // Set default contact info
     if (elements.contactEmail) elements.contactEmail.textContent = 'contact@example.com';
