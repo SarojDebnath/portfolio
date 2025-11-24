@@ -179,8 +179,10 @@ class PortfolioChatbot {
       
       if (error.message.includes('Rate limit')) {
         errorMessage += 'Please wait a moment and try again.';
-      } else if (error.message.includes('Failed to fetch')) {
-        errorMessage += 'Unable to connect to the server. Please check your connection.';
+      } else if (error.message.includes('Failed to fetch') || error.name === 'TypeError') {
+        errorMessage += `Unable to connect to the API server. Error: ${error.message}. Please check the API URL in index.html.`;
+        console.error('API URL:', this.apiUrl);
+        console.error('Full error:', error);
       } else {
         errorMessage += error.message;
       }

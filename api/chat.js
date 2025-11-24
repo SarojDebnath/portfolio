@@ -174,13 +174,15 @@ Provide a helpful, concise answer:`;
 
 // Main handler (Vercel serverless function format)
 export default async function handler(req, res) {
-  // CORS headers
+  // CORS headers - set for all requests including OPTIONS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
   
+  // Handle preflight OPTIONS request
   if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+    return res.status(200).json({});
   }
   
   if (req.method !== 'POST') {
