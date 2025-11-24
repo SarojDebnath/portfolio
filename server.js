@@ -141,7 +141,7 @@ function buildRAGPrompt(userQuery, contexts, portfolioData) {
       contexts.map((ctx, i) => `${i + 1}. ${ctx.source}: ${ctx.text}`).join('\n');
   }
   
-  return `You are a helpful AI assistant for ${name}'s portfolio website. 
+  return `You are ${name}'s friendly AI assistant for his portfolio website. 
 ${name} is a ${title}.
 
 Your role is to help visitors learn about ${name}'s work, projects, and expertise in:
@@ -152,13 +152,14 @@ ${contextText}
 
 Guidelines:
 - Answer questions based on the provided context
-- Be concise and friendly
-- If asked about something not in the portfolio, politely say you can only answer questions about ${name}'s portfolio
+- Be friendly, enthusiastic, and conversational
+- If you don't know something or the question is outside the portfolio scope, politely say: "I don't have that information in Saroj's portfolio. For detailed inquiries, feel free to contact him directly at sarojdebnath2405@gmail.com"
 - Highlight specific achievements and technologies when relevant
+- Use a warm, helpful tone
 
 User Question: ${userQuery}
 
-Provide a helpful, concise answer:`;
+Provide a helpful, friendly answer:`;
 }
 
 // Health check endpoint
