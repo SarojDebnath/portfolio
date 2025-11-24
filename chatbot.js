@@ -23,7 +23,7 @@ class PortfolioChatbot {
     chatbotContainer.innerHTML = `
       <!-- Chatbot Button -->
       <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open chatbot">
-        <img src="data/chatbot.png" alt="Saroj" class="chatbot-avatar-img" />
+        <img src="data/chatbot.png?v=2" alt="Saroj" class="chatbot-avatar-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-comments\'></i>';" />
         <span class="chatbot-badge" id="chatbot-badge" style="display: none;">1</span>
       </button>
       
@@ -45,7 +45,7 @@ class PortfolioChatbot {
         <div id="chatbot-messages" class="chatbot-messages">
           <div class="chatbot-message chatbot-message-bot">
             <div class="chatbot-avatar">
-              <img src="data/chatbot.png" alt="Saroj" class="chatbot-avatar-img-small" />
+              <img src="data/chatbot.png?v=2" alt="Saroj" class="chatbot-avatar-img-small" onerror="this.parentElement.innerHTML='<i class=\'fas fa-robot\'></i>';" />
             </div>
             <div class="chatbot-message-content">
               <p>Hey! 👋 I'm Saroj's AI assistant. I can help you learn about his projects, skills, and experience in Robotics, Computer Vision, and LLMOps. How can I help you?</p>
@@ -217,7 +217,7 @@ class PortfolioChatbot {
     if (role === 'bot') {
       messageDiv.innerHTML = `
         <div class="chatbot-avatar">
-          <img src="data/chatbot.png" alt="Saroj" class="chatbot-avatar-img-small" />
+          <img src="data/chatbot.png?v=2" alt="Saroj" class="chatbot-avatar-img-small" onerror="this.parentElement.innerHTML='<i class=\'fas fa-robot\'></i>';" />
         </div>
         <div class="chatbot-message-content">
           <p>${formattedText}</p>
@@ -303,17 +303,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Auto-popup after 3 seconds to greet the visitor
   setTimeout(() => {
-    const badge = document.getElementById('chatbot-badge');
-    if (badge && !window.portfolioChatbot.isOpen) {
-      badge.style.display = 'flex';
-      badge.textContent = '1';
-      
-      // Add pulsing animation to button
-      const toggleBtn = document.getElementById('chatbot-toggle');
-      if (toggleBtn) {
-        toggleBtn.classList.add('chatbot-pulse');
-      }
+    if (!window.portfolioChatbot.isOpen) {
+      // Open the chatbot automatically
+      window.portfolioChatbot.toggleChatbot();
     }
-  }, 3000); // Show badge after 3 seconds
+  }, 3000); // Auto-open after 3 seconds
 });
 
