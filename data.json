@@ -61,6 +61,20 @@
     "engagement": "85%",
     "graphImage": "data/minutes_taught.png",
     "mapImage": "data/udemy_map.png",
+    "monthlyData": [
+      { "month": "Dec 24", "minutes": 5500 },
+      { "month": "Jan 25", "minutes": 6000 },
+      { "month": "Feb 25", "minutes": 5800 },
+      { "month": "Mar 25", "minutes": 6200 },
+      { "month": "Apr 25", "minutes": 5900 },
+      { "month": "May 25", "minutes": 6100 },
+      { "month": "Jun 25", "minutes": 5800 },
+      { "month": "Jul 25", "minutes": 6000 },
+      { "month": "Aug 25", "minutes": 5900 },
+      { "month": "Sep 25", "minutes": 6100 },
+      { "month": "Oct 25", "minutes": 5800 },
+      { "month": "Nov 25", "minutes": 4243.07 }
+    ],
     "reviews": [
       "data/reviews/1.png",
       "data/reviews/2.png",
