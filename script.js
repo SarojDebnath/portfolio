@@ -29,7 +29,6 @@ function initializeElements() {
         udemyMinutes: document.getElementById('udemy-minutes'),
         udemyGraph: document.getElementById('udemy-graph'),
         udemyMap: document.getElementById('udemy-map'),
-        udemyChart: document.getElementById('udemy-chart'),
         reviewSlider: document.getElementById('review-slider'),
         reviewDots: document.getElementById('review-dots'),
         reviewPrev: document.getElementById('review-prev'),
@@ -279,8 +278,6 @@ function extractYouTubeId(url) {
 // UDEMY SECTION
 // ============================================
 // **UPDATE data.json udemy section to modify stats**
-let udemyChart = null; // Store chart instance
-
 function populateUdemy(udemyData) {
     if (!udemyData) {
         if (elements.udemyMinutes) {
@@ -289,24 +286,29 @@ function populateUdemy(udemyData) {
         return;
     }
     
-    // Display minutes taught with counting animation
+    // Display minutes taught (formatted with commas)
     if (elements.udemyMinutes) {
         if (udemyData.totalMinutes !== undefined && udemyData.totalMinutes !== null) {
-            // Animate counting from 0 to the target value
-            animateNumberCounting(elements.udemyMinutes, 0, udemyData.totalMinutes, 2000);
+            const formattedMinutes = udemyData.totalMinutes.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            elements.udemyMinutes.textContent = formattedMinutes;
         } else {
             elements.udemyMinutes.textContent = 'N/A';
         }
     }
     
-    // Create dynamic chart instead of static image
-    if (elements.udemyChart && udemyData.monthlyData) {
-        createUdemyChart(udemyData.monthlyData);
-    } else if (elements.udemyChart) {
-        // Fallback: create chart with sample data if monthlyData not provided
-        // You can generate this from the totalMinutes or use default structure
-        const defaultMonthlyData = generateDefaultMonthlyData(udemyData.totalMinutes || 42443.07);
-        createUdemyChart(defaultMonthlyData);
+    // Load graph image
+    if (elements.udemyGraph && udemyData.graphImage) {
+        elements.udemyGraph.src = udemyData.graphImage;
+        elements.udemyGraph.style.display = 'block';
+        elements.udemyGraph.onerror = function() {
+            this.style.display = 'none';
+        };
+        elements.udemyGraph.onload = function() {
+            this.style.display = 'block';
+        };
     }
     
     // Load map image
@@ -326,133 +328,6 @@ function populateUdemy(udemyData) {
         reviewImages = udemyData.reviews;
         initializeReviewSlider();
     }
-}
-
-// Create dynamic chart using Chart.js
-function createUdemyChart(monthlyData) {
-    if (!elements.udemyChart) return;
-    
-    const ctx = elements.udemyChart.getContext('2d');
-    
-    // Destroy existing chart if it exists
-    if (udemyChart) {
-        udemyChart.destroy();
-    }
-    
-    // Prepare data
-    const labels = monthlyData.map(item => item.month);
-    const data = monthlyData.map(item => item.minutes);
-    
-    // Create chart
-    udemyChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Minutes Taught',
-                data: data,
-                backgroundColor: 'rgba(59, 130, 246, 0.7)',
-                borderColor: 'rgba(59, 130, 246, 1)',
-                borderWidth: 1,
-                borderRadius: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-                legend: {
-                    display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Minutes Taught by Month',
-                    font: {
-                        size: 14,
-                        weight: 'bold'
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return value.toLocaleString();
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: 'Minutes'
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Month'
-                    }
-                }
-            },
-            animation: {
-                duration: 1500,
-                easing: 'easeInOutQuart'
-            }
-        }
-    });
-}
-
-// Generate default monthly data if not provided in data.json
-function generateDefaultMonthlyData(totalMinutes) {
-    // Generate 12 months of data with some variation
-    const months = ['Dec 24', 'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'May 25', 
-                    'Jun 25', 'Jul 25', 'Aug 25', 'Sep 25', 'Oct 25', 'Nov 25'];
-    const avgMonthly = totalMinutes / 12;
-    const monthlyData = months.map((month, index) => {
-        // Add some variation (±30%)
-        const variation = (Math.random() - 0.5) * 0.6;
-        const minutes = avgMonthly * (1 + variation);
-        return {
-            month: month,
-            minutes: Math.round(minutes * 100) / 100
-        };
-    });
-    return monthlyData;
-}
-
-// Animate number counting with decimals
-function animateNumberCounting(element, start, end, duration) {
-    const startTime = performance.now();
-    const range = end - start;
-    
-    function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Easing function for smooth animation
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        const current = start + (range * easeOutQuart);
-        
-        // Format with 2 decimal places
-        const formatted = current.toLocaleString('en-US', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
-        
-        element.textContent = formatted;
-        
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        } else {
-            // Ensure final value is exact
-            const finalFormatted = end.toLocaleString('en-US', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
-            element.textContent = finalFormatted;
-        }
-    }
-    
-    requestAnimationFrame(update);
 }
 
 // Initialize review slider
