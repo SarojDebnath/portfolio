@@ -174,20 +174,13 @@ Provide a helpful, concise answer:`;
 
 // Main handler (Vercel serverless function format)
 export default async function handler(req, res) {
-  // CORS headers - MUST be set before any response
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS, GET',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    'Access-Control-Max-Age': '86400'
-  };
+  // Set CORS headers FIRST - before any other logic
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Max-Age', '86400');
   
-  // Set all CORS headers
-  Object.keys(headers).forEach(key => {
-    res.setHeader(key, headers[key]);
-  });
-  
-  // Handle preflight OPTIONS request FIRST
+  // Handle preflight OPTIONS request - return immediately
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
