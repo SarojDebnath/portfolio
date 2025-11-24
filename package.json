@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-chatbot",
+  "version": "1.0.0",
+  "description": "RAG Chatbot for Portfolio Website",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
+
