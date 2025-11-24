@@ -4,9 +4,12 @@
   "description": "RAG Chatbot for Portfolio Website",
   "type": "module",
   "scripts": {
-    "dev": "vercel dev"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
 }
 
