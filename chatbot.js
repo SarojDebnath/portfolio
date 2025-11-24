@@ -273,7 +273,14 @@ class PortfolioChatbot {
 document.addEventListener('DOMContentLoaded', () => {
   // Get API URL from environment or use default
   // In production, this should be your Vercel deployment URL
-  const apiUrl = window.CHATBOT_API_URL || 'https://your-vercel-app.vercel.app/api/chat';
+  let apiUrl = window.CHATBOT_API_URL || 'https://your-vercel-app.vercel.app/api/chat';
+  
+  // Use CORS proxy if needed (temporary workaround for CORS issues)
+  // Remove this once CORS is fixed on the backend
+  const useCORSProxy = window.USE_CORS_PROXY || false;
+  if (useCORSProxy) {
+    apiUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
+  }
   
   // Initialize chatbot
   window.portfolioChatbot = new PortfolioChatbot(apiUrl);
