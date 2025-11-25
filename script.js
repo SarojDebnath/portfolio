@@ -186,7 +186,7 @@ function createProjectCard(project) {
     card.className = 'project-card bg-white rounded-lg shadow-lg overflow-hidden';
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
-    card.style.transition = 'all 0.5s ease';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     
     let toolsHTML = '';
     if (project.tools && project.tools.length > 0) {
@@ -202,40 +202,31 @@ function createProjectCard(project) {
         const googleDriveId = extractGoogleDriveId(project.videoUrl);
         
         if (videoId) {
-            // Check if this is the first robotics project (Automatic Optical Fiber Inspection)
-            // Only autoplay the first project video
-            const isFirstProject = project.title === "Automatic Optical Fiber Inspection with UR5";
-            const autoplayParam = isFirstProject ? "autoplay=1&mute=1" : "";
-            
-            // Embedded YouTube video with conditional autoplay
+            // Embedded YouTube video with autoplay and mute
             videoHTML = `
                 <div class="mt-4">
                     <div class="video-container">
                         <iframe 
-                            src="https://www.youtube.com/embed/${videoId}?${autoplayParam}&loop=1&playlist=${videoId}&controls=1&rel=0" 
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&rel=0" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen
-                            loading="lazy">
+                            loading="eager">
                         </iframe>
                     </div>
                 </div>
             `;
         } else if (googleDriveId) {
-            // Check if this is the first robotics project (Automatic Optical Fiber Inspection)
-            const isFirstProject = project.title === "Automatic Optical Fiber Inspection with UR5";
-            const autoplayParam = isFirstProject ? "autoplay=1&mute=1" : "";
-            
-            // Embedded Google Drive video
+            // Embedded Google Drive video with autoplay
             videoHTML = `
                 <div class="mt-4">
                     <div class="video-container">
                         <iframe 
-                            src="https://drive.google.com/file/d/${googleDriveId}/preview?${autoplayParam}" 
+                            src="https://drive.google.com/file/d/${googleDriveId}/preview" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen
-                            loading="lazy">
+                            loading="eager">
                         </iframe>
                     </div>
                 </div>
