@@ -199,13 +199,39 @@ function createProjectCard(project) {
     let videoHTML = '';
     if (project.videoUrl) {
         const videoId = extractYouTubeId(project.videoUrl);
+        const googleDriveId = extractGoogleDriveId(project.videoUrl);
+        
         if (videoId) {
-            // Embedded YouTube video with autoplay, mute, and loop
+            // Check if this is the first robotics project (Automatic Optical Fiber Inspection)
+            // Only autoplay the first project video
+            const isFirstProject = project.title === "Automatic Optical Fiber Inspection with UR5";
+            const autoplayParam = isFirstProject ? "autoplay=1&mute=1" : "";
+            
+            // Embedded YouTube video with conditional autoplay
             videoHTML = `
                 <div class="mt-4">
                     <div class="video-container">
                         <iframe 
-                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&rel=0" 
+                            src="https://www.youtube.com/embed/${videoId}?${autoplayParam}&loop=1&playlist=${videoId}&controls=1&rel=0" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            `;
+        } else if (googleDriveId) {
+            // Check if this is the first robotics project (Automatic Optical Fiber Inspection)
+            const isFirstProject = project.title === "Automatic Optical Fiber Inspection with UR5";
+            const autoplayParam = isFirstProject ? "autoplay=1&mute=1" : "";
+            
+            // Embedded Google Drive video
+            videoHTML = `
+                <div class="mt-4">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://drive.google.com/file/d/${googleDriveId}/preview?${autoplayParam}" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen
@@ -215,7 +241,7 @@ function createProjectCard(project) {
                 </div>
             `;
         } else {
-            // Fallback to link if not YouTube
+            // Fallback to link if not YouTube or Google Drive
             videoHTML = `
                 <div class="mt-4">
                     <a href="${project.videoUrl}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold">
@@ -262,6 +288,28 @@ function extractYouTubeId(url) {
     const patterns = [
         /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
         /youtube\.com\/v\/([^&\n?#]+)/
+    ];
+    
+    for (const pattern of patterns) {
+        const match = url.match(pattern);
+        if (match && match[1]) {
+            return match[1];
+        }
+    }
+    
+    return null;
+}
+
+// Helper function to extract Google Drive file ID
+function extractGoogleDriveId(url) {
+    if (!url) return null;
+    
+    // Handle Google Drive URL formats:
+    // https://drive.google.com/file/d/FILE_ID/view
+    // https://drive.google.com/open?id=FILE_ID
+    const patterns = [
+        /drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/,
+        /drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/
     ];
     
     for (const pattern of patterns) {
