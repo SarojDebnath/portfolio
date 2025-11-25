@@ -12,12 +12,12 @@
         "title": "Automatic Optical Fiber Inspection with UR5",
         "description": "Engineered a robotic vision system integrating UR5 collaborative robot with deep learning-based anomaly detection to identify microscopic dust particles (15–25µm) on optical fiber connectors. Achieved 98% detection accuracy with sub-second processing time, reducing manual inspection costs by 85%.",
         "tools": ["UR5 Robot", "ROS", "Deep Learning", "Python", "OpenCV", "PyTorch", "Computer Vision"],
-        "videoUrl": "https://www.youtube.com/watch?v=example1",
+        "videoUrl": "https://drive.google.com/file/d/1UPClF-_Ny_1TPNRUHboscIx_5ZryjU7v/view?usp=sharing",
         "githubUrl": ""
       },
       {
-        "title": "Automated PCB Inspection System (VLM + ResNet + PatchVORE)",
-        "description": "Designed an advanced AOI system combining Vision-Language Models with ResNet and PatchVORE architecture for multi-defect PCB inspection. Implemented zero-shot defect classification using VLMs, achieving 95%+ accuracy across 12 defect categories without fine-tuning.",
+        "title": "Automated PCB Inspection System (VLM + ResNet + PatchCORE)",
+        "description": "Designed an advanced AOI system combining Vision-Language Models with ResNet and PatchCORE architecture for multi-defect PCB inspection. Implemented zero-shot defect classification using VLMs, achieving 95%+ accuracy across 12 defect categories without fine-tuning.",
         "tools": ["Vision-Language Models", "ResNet", "PatchVORE", "PyTorch", "CLIP", "Computer Vision", "MLOps"],
         "videoUrl": "https://www.youtube.com/watch?v=example2",
         "githubUrl": ""
@@ -62,9 +62,9 @@
     "graphImage": "data/minutes_taught.png",
     "mapImage": "data/udemy_map.png",
     "reviews": [
-      "data/reviews/1.png",
-      "data/reviews/2.png",
       "data/reviews/3.png",
+      "data/reviews/2.png",
+      "data/reviews/1.png",
       "data/reviews/4.png",
       "data/reviews/5.png",
       "data/reviews/6.png"
