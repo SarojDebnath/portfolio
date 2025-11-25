@@ -12,28 +12,42 @@
         "title": "Automatic Optical Fiber Inspection with UR5",
         "description": "Engineered a robotic vision system integrating UR5 collaborative robot with deep learning-based anomaly detection to identify microscopic dust particles (15–25µm) on optical fiber connectors. Achieved 98% detection accuracy with sub-second processing time, reducing manual inspection costs by 85%.",
         "tools": ["UR5 Robot", "ROS", "Deep Learning", "Python", "OpenCV", "PyTorch", "Computer Vision"],
-        "videoUrl": "https://drive.google.com/file/d/1UPClF-_Ny_1TPNRUHboscIx_5ZryjU7v/view?usp=sharing",
+        "videoUrl": "https://youtu.be/yOXaliQ6UzM",
         "githubUrl": ""
       },
       {
         "title": "Automated PCB Inspection System (VLM + ResNet + PatchCORE)",
         "description": "Designed an advanced AOI system combining Vision-Language Models with ResNet and PatchCORE architecture for multi-defect PCB inspection. Implemented zero-shot defect classification using VLMs, achieving 95%+ accuracy across 12 defect categories without fine-tuning.",
-        "tools": ["Vision-Language Models", "ResNet", "PatchVORE", "PyTorch", "CLIP", "Computer Vision", "MLOps"],
-        "videoUrl": "https://www.youtube.com/watch?v=example2",
+        "tools": ["Vision-Language Models", "ResNet", "PatchCORE", "PyTorch", "CLIP", "Computer Vision", "MLOps"],
+        "videoUrl": "",
         "githubUrl": ""
       },
       {
         "title": "Interactive Face-Tracking Robot with Real-Time Vision",
         "description": "Built an engaging robotic system featuring real-time face detection, tracking, and emotion recognition. Integrated servo control with computer vision pipeline for natural head movements and human interaction. Optimized for edge deployment with <100ms latency.",
         "tools": ["Computer Vision", "Face Detection", "OpenCV", "Arduino", "Python", "Real-Time Processing", "Edge AI"],
-        "videoUrl": "https://www.youtube.com/watch?v=example3",
+        "videoUrl": "https://youtube.com/shorts/WYaOU6lk_F4",
         "githubUrl": ""
       },
       {
-        "title": "Multi-Camera 3D Object Tracking for Robotics",
-        "description": "Developed a multi-camera system for 3D object tracking and pose estimation in robotic manipulation tasks. Implemented SLAM and visual odometry for accurate spatial awareness. System enables robots to track and grasp objects in dynamic environments with 95% success rate.",
-        "tools": ["SLAM", "3D Vision", "Camera Calibration", "Point Cloud", "ROS", "Python", "C++"],
-        "videoUrl": "",
+        "title": "Automatic Batch Barcode Detection and Decoder Machine",
+        "description": "Used 3 OAK-1 12 MP cameras to capture and build a barcode scanner from scratch using opensource tools like zxingcpp to decode and detect 60 barcodes/datamatrix at 30 fps. High-speed industrial barcode scanning solution for automated warehouses.",
+        "tools": ["OAK-1 Camera", "Computer Vision", "Python", "OpenCV", "zxingcpp", "Real-Time Processing", "Barcode Detection"],
+        "videoUrl": "https://youtu.be/fAgcV6Awqss",
+        "githubUrl": ""
+      },
+      {
+        "title": "Automatic Machine Plugging System with 3D Vision",
+        "description": "Developed and deployed an automatic machine plugging system with 3D vision. Calculated target object position with reference to Universal Robot position with maximum inaccuracy of 0.1mm. Scanning labels to read inventory data with camera and OCR. Deployed IBVS for achieving stability and accuracy.",
+        "tools": ["Universal Robot", "YOLOv12", "Pointnet", "Deep Learning", "Python", "RaspberryPi", "Sequencer", "3D Vision", "IBVS", "OCR"],
+        "videoUrl": "https://drive.google.com/file/d/114ftuGGV0snjfqAaqxq-6SDa1Oul4aem/view?usp=sharing",
+        "githubUrl": ""
+      },
+      {
+        "title": "LED Detection Automation System",
+        "description": "Automated LED test system for optical devices using classical image processing pipelines. Validates LED colors and intensities and logs them to global databases using SAP APIs. Streamlined quality control process for manufacturing.",
+        "tools": ["Python", "OpenCV", "Image Processing", "SAP API", "Computer Vision", "Quality Control", "Automation"],
+        "videoUrl": "https://youtu.be/30vYu9BJl-0",
         "githubUrl": ""
       }
     ],
