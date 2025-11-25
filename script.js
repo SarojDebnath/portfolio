@@ -290,19 +290,14 @@ function createProjectCard(project) {
 function extractYouTubeId(url) {
     if (!url) return null;
     
-    // Normalize URL to lowercase for consistent matching
-    const normalizedUrl = url.toLowerCase();
-    
     // Handle various YouTube URL formats including Shorts
     const patterns = [
-        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
-        /youtube\.com\/v\/([^&\n?#]+)/,
-        /youtube\.com\/shorts\/([^&\n?#]+)/,  // YouTube Shorts
-        /youtu\.be\/([^&\n?#]+)/  // Short youtu.be links
+        /(?:youtube\.com\/shorts\/|youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/i,
+        /youtube\.com\/v\/([^&\n?#]+)/i
     ];
     
     for (const pattern of patterns) {
-        const match = normalizedUrl.match(pattern);
+        const match = url.match(pattern);
         if (match && match[1]) {
             return match[1];
         }
