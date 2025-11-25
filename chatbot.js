@@ -304,12 +304,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize chatbot
   window.portfolioChatbot = new PortfolioChatbot(apiUrl);
   
-  // Auto-popup after 3 seconds to greet the visitor
-  setTimeout(() => {
-    if (!window.portfolioChatbot.isOpen) {
-      // Open the chatbot automatically
-      window.portfolioChatbot.toggleChatbot();
-    }
-  }, 3000); // Auto-open after 3 seconds
+  // Auto-popup disabled - users can click the chatbot button to open it
+  // setTimeout(() => {
+  //   if (!window.portfolioChatbot.isOpen) {
+  //     // Open the chatbot automatically
+  //     window.portfolioChatbot.toggleChatbot();
+  //   }
+  // }, 3000); // Auto-open after 3 seconds
 });
 
