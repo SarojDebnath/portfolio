@@ -48,7 +48,7 @@ class PortfolioChatbot {
               <img src="data/chatbot.png?v=2" alt="Saroj" class="chatbot-avatar-img-small" onerror="this.parentElement.innerHTML='<i class=\'fas fa-robot\'></i>';" />
             </div>
             <div class="chatbot-message-content">
-              <p>Hey! 👋 I'm Saroj's AI assistant. I can help you learn about his projects, skills, and experience in Robotics, Computer Vision, and LLMOps. How can I help you?</p>
+              <p>Hey! 👋 I'm Saroj. I can help you learn about my projects, skills, and experience in Robotics, Computer Vision, and LLMOps. How can I help you?</p>
             </div>
           </div>
         </div>
@@ -134,13 +134,14 @@ class PortfolioChatbot {
     
     if (!message || this.isLoading) return;
     
-    // Clear input
+    // Clear input immediately for better UX
     input.value = '';
+    input.disabled = true;
     
-    // Add user message to UI
+    // Add user message to UI immediately
     this.addMessage(message, 'user');
     
-    // Show loading
+    // Show loading immediately
     this.setLoading(true);
     
     try {
@@ -193,6 +194,8 @@ class PortfolioChatbot {
       this.addMessage(errorMessage, 'bot', true);
     } finally {
       this.setLoading(false);
+      input.disabled = false;
+      input.focus();
     }
   }
   

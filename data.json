@@ -68,6 +68,29 @@
       "data/reviews/4.png",
       "data/reviews/5.png",
       "data/reviews/6.png"
+    ],
+    "courses": [
+      {
+        "title": "Build an AI Resume Scorer App with Python | LLM | FastAPI",
+        "subtitle": "Learn Python, FastAPI, and AI Integration by Building Real Projects — including an AI Resume Scorer and Computer Vision",
+        "description": "Ready to build something real with AI? In this course, you'll learn Python programming, FastAPI web development, and AI integration by creating a complete AI Resume Scorer App powered by Large Language Models (LLMs). You'll also explore a mini Computer Vision project and use AI tools like Cursor to design a sleek, interactive user interface. Starting from the basics, you'll learn how to write clean Python code, build and test APIs with FastAPI, connect AI models to your app, and design a responsive front end — all explained step by step. You'll also gain practical experience in working with AI prompts, integrating APIs, and understanding how AI models evaluate and score resumes. This course is perfect for beginners and intermediate developers who want to move beyond theory and start building professional-grade AI applications. Every project you create here can be added directly to your portfolio to impress employers or clients. By the end of the course, you'll have: A strong foundation in Python and FastAPI, Hands-on experience with LLM-based AI apps, A functional AI Resume Scorer you can showcase, A mini Computer Vision project to reinforce your skills. Join now and start building your own real-world AI apps today — one line of Python at a time!",
+        "level": "Beginner Level",
+        "category": "IT & Software",
+        "subcategory": "Other IT & Software",
+        "locale": "English (US)",
+        "topics": ["Python", "FastAPI", "LLM", "AI Integration", "Computer Vision", "Web Development"]
+      },
+      {
+        "title": "Hands on Universal Robots with Python: Zero to Hero",
+        "subtitle": "Python, Universal Robots, Robotic Arms, Communication systems, Simulation, Industrial Robots, Manipulators, Mechatronics",
+        "description": "This course is designed to take you from the fundamentals of robotics and Python programming to hands-on projects using real robots. You'll start by learning the essential theory and mathematics behind robotics, building a strong foundation for understanding robot movement and control. Next, we'll dive into Python programming, covering everything from the basics up to Object-Oriented Programming (OOP) concepts. Throughout the course, you'll work on exciting Python projects to solidify your coding skills. We'll then explore the basics of communication systems and their applications in robotics, accompanied by practical projects to see these concepts in action. To further enhance your learning, you'll experience simulations to test and develop your robotic systems before moving on to real-world tasks. Simulations will be done in ur-sim (A Universal Robot simulation Platform). Finally, you'll work with a real robot to complete advanced projects like pick-and-place tasks and a face-tracking system. By the end of this course, you'll have the knowledge, coding skills, and hands-on experience to confidently pursue robotics projects. This course is suitable for beginners with an interest in robotics and programming, as well as for anyone looking to expand their skills through practical, project-based learning. You'll also gain valuable problem-solving skills and technical insight that can be applied in various fields.",
+        "level": "Beginner Level",
+        "category": "IT & Software",
+        "subcategory": "Other IT & Software",
+        "locale": "English (US)",
+        "primaryTopic": "Robotics",
+        "topics": ["Python", "Universal Robots", "Robotic Arms", "Communication Systems", "Simulation", "Industrial Robots", "Manipulators", "Mechatronics", "ROS", "ur-sim"]
+      }
     ]
   },
   "experience": [

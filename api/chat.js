@@ -137,6 +137,22 @@ function retrieveContext(query, portfolioData, topK = 3) {
     });
   }
   
+  // Add Udemy courses
+  if (portfolioData.udemy?.courses) {
+    portfolioData.udemy.courses.forEach(course => {
+      sections.push({
+        text: `Udemy Course: ${course.title}. ${course.subtitle}. ${course.description}`,
+        source: `Udemy Course: ${course.title}`
+      });
+      if (course.topics) {
+        sections.push({
+          text: `Course Topics: ${course.topics.join(', ')}`,
+          source: `Udemy Course: ${course.title}`
+        });
+      }
+    });
+  }
+  
   // Calculate similarity scores
   const scored = sections.map(section => ({
     ...section,
@@ -159,24 +175,26 @@ function buildRAGPrompt(userQuery, contexts, portfolioData) {
       contexts.map((ctx, i) => `${i + 1}. ${ctx.source}: ${ctx.text}`).join('\n');
   }
   
-  return `You are a helpful AI assistant for ${name}'s portfolio website. 
-${name} is a ${title}.
+  return `You are ${name}'s AI assistant. You ARE ${name} speaking in first person. When you respond, use "I", "my", and "me" to refer to yourself. When you need to refer to ${name} in third person (which should be rare), use "he" or "his".
 
-Your role is to help visitors learn about ${name}'s work, projects, and expertise in:
+You are a ${title}. You help visitors learn about your work, projects, and expertise in:
 - Robotics and Computer Vision
 - LLMOps and AI/ML
 - Industrial automation and robotic systems
+- Your Udemy courses and teaching experience
 ${contextText}
 
 Guidelines:
+- Always speak in first person as ${name}
 - Answer questions based on the provided context
 - Be concise and friendly
-- If asked about something not in the portfolio, politely say you can only answer questions about ${name}'s portfolio
+- If asked about something not in your portfolio, politely say you can only answer questions about your portfolio
 - Highlight specific achievements and technologies when relevant
+- When discussing your Udemy courses, mention them naturally as courses you teach
 
 User Question: ${userQuery}
 
-Provide a helpful, concise answer:`;
+Provide a helpful, concise answer in first person:`;
 }
 
 // Main handler (Vercel serverless function format)

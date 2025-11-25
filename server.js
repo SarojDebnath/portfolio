@@ -97,6 +97,12 @@ function retrieveContext(query, portfolioData, topK = 3) {
         text: `${proj.title}. ${proj.description}`,
         source: `Robotics Project: ${proj.title}`
       });
+      if (proj.tools) {
+        sections.push({
+          text: `Technologies: ${proj.tools.join(', ')}`,
+          source: `Robotics Project: ${proj.title}`
+        });
+      }
     });
   }
   
@@ -106,6 +112,12 @@ function retrieveContext(query, portfolioData, topK = 3) {
         text: `${proj.title}. ${proj.description}`,
         source: `LLMOps Project: ${proj.title}`
       });
+      if (proj.tools) {
+        sections.push({
+          text: `Technologies: ${proj.tools.join(', ')}`,
+          source: `LLMOps Project: ${proj.title}`
+        });
+      }
     });
   }
   
@@ -116,6 +128,30 @@ function retrieveContext(query, portfolioData, topK = 3) {
         text: `${exp.title} at ${exp.company} (${exp.duration}). ${exp.description}`,
         source: `Experience: ${exp.company}`
       });
+      if (exp.highlights) {
+        exp.highlights.forEach(highlight => {
+          sections.push({
+            text: highlight,
+            source: `Experience: ${exp.company}`
+          });
+        });
+      }
+    });
+  }
+  
+  // Add Udemy courses
+  if (portfolioData.udemy?.courses) {
+    portfolioData.udemy.courses.forEach(course => {
+      sections.push({
+        text: `Udemy Course: ${course.title}. ${course.subtitle}. ${course.description}`,
+        source: `Udemy Course: ${course.title}`
+      });
+      if (course.topics) {
+        sections.push({
+          text: `Course Topics: ${course.topics.join(', ')}`,
+          source: `Udemy Course: ${course.title}`
+        });
+      }
     });
   }
   
@@ -141,25 +177,26 @@ function buildRAGPrompt(userQuery, contexts, portfolioData) {
       contexts.map((ctx, i) => `${i + 1}. ${ctx.source}: ${ctx.text}`).join('\n');
   }
   
-  return `You are ${name}'s friendly AI assistant for his portfolio website. 
-${name} is a ${title}.
+  return `You are ${name}'s AI assistant. You ARE ${name} speaking in first person. When you respond, use "I", "my", and "me" to refer to yourself. When you need to refer to ${name} in third person (which should be rare), use "he" or "his".
 
-Your role is to help visitors learn about ${name}'s work, projects, and expertise in:
+You are a ${title}. You help visitors learn about your work, projects, and expertise in:
 - Robotics and Computer Vision
 - LLMOps and AI/ML
 - Industrial automation and robotic systems
+- Your Udemy courses and teaching experience
 ${contextText}
 
 Guidelines:
+- Always speak in first person as ${name}
 - Answer questions based on the provided context
-- Be friendly, enthusiastic, and conversational
-- If you don't know something or the question is outside the portfolio scope, politely say: "I don't have that information in Saroj's portfolio. For detailed inquiries, feel free to contact him directly at sarojdebnath2405@gmail.com"
+- Be concise and friendly
+- If asked about something not in your portfolio, politely say you can only answer questions about your portfolio
 - Highlight specific achievements and technologies when relevant
-- Use a warm, helpful tone
+- When discussing your Udemy courses, mention them naturally as courses you teach
 
 User Question: ${userQuery}
 
-Provide a helpful, friendly answer:`;
+Provide a helpful, concise answer in first person:`;
 }
 
 // Health check endpoint
