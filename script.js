@@ -209,12 +209,20 @@ function createProjectCard(project) {
         const googleDriveId = extractGoogleDriveId(project.videoUrl);
         
         if (videoId) {
+            // Check if it's a YouTube Shorts URL
+            const isShorts = project.videoUrl.includes('/shorts/');
+            
             // Embedded YouTube video with autoplay and mute
+            // For Shorts, we still use the embed format but may need different parameters
+            const embedUrl = isShorts 
+                ? `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1&rel=0`
+                : `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&rel=0`;
+            
             videoHTML = `
                 <div class="mt-4">
                     <div class="video-container">
                         <iframe 
-                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&rel=0" 
+                            src="${embedUrl}" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen
@@ -282,14 +290,19 @@ function createProjectCard(project) {
 function extractYouTubeId(url) {
     if (!url) return null;
     
-    // Handle various YouTube URL formats
+    // Normalize URL to lowercase for consistent matching
+    const normalizedUrl = url.toLowerCase();
+    
+    // Handle various YouTube URL formats including Shorts
     const patterns = [
         /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
-        /youtube\.com\/v\/([^&\n?#]+)/
+        /youtube\.com\/v\/([^&\n?#]+)/,
+        /youtube\.com\/shorts\/([^&\n?#]+)/,  // YouTube Shorts
+        /youtu\.be\/([^&\n?#]+)/  // Short youtu.be links
     ];
     
     for (const pattern of patterns) {
-        const match = url.match(pattern);
+        const match = normalizedUrl.match(pattern);
         if (match && match[1]) {
             return match[1];
         }
