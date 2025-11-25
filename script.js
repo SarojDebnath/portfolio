@@ -70,7 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 async function loadData() {
     try {
-        const response = await fetch(CONFIG.dataFile);
+        // Add cache-busting parameter to ensure fresh data
+        const cacheBuster = `?v=${Date.now()}`;
+        const response = await fetch(CONFIG.dataFile + cacheBuster, {
+            cache: 'no-store',
+            headers: {
+                'Cache-Control': 'no-cache'
+            }
+        });
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
