@@ -259,6 +259,15 @@ function createProjectCard(project) {
         }
     }
     
+    let imageHTML = '';
+    if (project.imageUrl) {
+        imageHTML = `
+            <div class="mt-4 mb-4">
+                <img src="${project.imageUrl}" alt="${project.title}" class="w-full rounded-lg shadow-md object-cover" loading="lazy" onerror="this.style.display='none';">
+            </div>
+        `;
+    }
+    
     let githubHTML = '';
     if (project.githubUrl) {
         githubHTML = `
@@ -278,6 +287,7 @@ function createProjectCard(project) {
             <div class="mb-4">
                 ${toolsHTML}
             </div>
+            ${imageHTML}
             ${videoHTML}
             ${githubHTML}
         </div>

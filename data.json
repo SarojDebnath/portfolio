@@ -19,7 +19,8 @@
         "title": "Automated PCB Inspection System (VLM + ResNet + PatchCORE)",
         "description": "Designed an advanced AOI system combining Vision-Language Models with ResNet and PatchCORE architecture for multi-defect PCB inspection. Implemented zero-shot defect classification using VLMs, achieving 95%+ accuracy across 12 defect categories without fine-tuning.",
         "tools": ["Vision-Language Models", "ResNet", "PatchCORE", "PyTorch", "CLIP", "Computer Vision", "MLOps"],
-        "videoUrl": "",
+        "videoUrl": "https://youtu.be/_zU1zGCsPh4",
+        "imageUrl": "data/anomalyPCB.png",
         "githubUrl": ""
       },
       {
